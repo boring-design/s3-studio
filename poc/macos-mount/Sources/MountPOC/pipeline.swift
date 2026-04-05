@@ -20,7 +20,7 @@ public final class MockObjectStoreClient: ObjectStoreClient {
     }
 
     public func list(prefix: String) throws -> [ObjectEntry] {
-        let normalized = prefix == "/" ? "" : prefix
+        let normalized = prefix.hasPrefix("/") ? String(prefix.dropFirst()) : prefix
         return objects
             .keys
             .filter { $0.hasPrefix(normalized) }
