@@ -58,3 +58,11 @@ jobs:
 
       - name: Run E2E tests
         run: pnpm --filter @s3-studio/web test:e2e
+
+      - name: Save failed test report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: apps/s3-studio/playwright-report
+          retention-days: 3
