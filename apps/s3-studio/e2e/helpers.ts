@@ -47,7 +47,7 @@ export async function uploadFile(
   filename: string,
   content: string
 ) {
-  await page.locator('input[type="file"]').setInputFiles({
+  await page.getByLabel("Upload files", { exact: true }).setInputFiles({
     name: filename,
     mimeType: "text/plain",
     buffer: Buffer.from(content, "utf-8"),

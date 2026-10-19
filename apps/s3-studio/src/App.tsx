@@ -410,6 +410,7 @@ export default function App() {
 
       <input
         type="file"
+        aria-label="Upload files"
         ref={fileInputRef}
         className="hidden"
         multiple
@@ -418,6 +419,7 @@ export default function App() {
 
       <input
         type="file"
+        aria-label="Import profiles"
         ref={importFileInputRef}
         className="hidden"
         accept="application/json,.json"

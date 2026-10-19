@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build-and-deploy:
-    runs-on: blacksmith-4vcpu-ubuntu-2404
+    runs-on: elastic-fruit
     steps:
       - uses: actions/checkout@v4
 
@@ -41,10 +41,9 @@ jobs:
 
       - name: Deploy to Cloudflare Pages
         if: github.ref == 'refs/heads/main'
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: s3-studio
-          directory: ./apps/s3-studio/dist
+          command: pages deploy ./apps/s3-studio/dist --project-name=s3-studio
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
