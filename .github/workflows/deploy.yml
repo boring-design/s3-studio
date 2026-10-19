@@ -43,7 +43,6 @@ jobs:
         if: github.ref == 'refs/heads/main'
         uses: cloudflare/wrangler-action@v4
         with:
-          packageManager: npm
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy ./apps/s3-studio/dist --project-name=s3-studio
